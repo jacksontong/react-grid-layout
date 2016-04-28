@@ -35,7 +35,7 @@
     "deep-equal": "^1.0.0",
     "object-assign": "^2.0.0",
     "react-draggable": "tongtoanbs/react-draggable#v0.3.4",
-    "react-resizable": "^0.3.2"
+    "react-resizable": "tongtoanbs/react-resizable#0.3.4"
   },
   "devDependencies": {
     "babel": "^5.0.1",
