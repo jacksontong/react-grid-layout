@@ -23,6 +23,7 @@ var GridItem = React.createClass({
     containerWidth: React.PropTypes.number.isRequired,
     rowHeight: React.PropTypes.number.isRequired,
     margin: React.PropTypes.array.isRequired,
+    maxRows: React.PropTypes.number.isRequired,
 
     // These are all in grid units
     x: React.PropTypes.number.isRequired,
@@ -131,12 +132,14 @@ var GridItem = React.createClass({
 
     left = left - this.props.margin[0];
     top = top - this.props.margin[1];
+    var maxRows = this.props.maxRows;
+    var h = this.props.h;
     // This is intentional; because so much of the logic on moving boxes up/down relies
     // on an exact y position, we only round the x, not the y.
     var x = Math.round(left / this.props.containerWidth * this.props.cols);
     var y = Math.floor(top / this.props.rowHeight);
     x = Math.max(Math.min(x, this.props.cols), 0);
-    y = Math.max(y, 0);
+    y = Math.max(Math.min(y, maxRows - h), 0);
     return { x: x, y: y };
   },
 
@@ -152,10 +155,12 @@ var GridItem = React.createClass({
 
     width = width + this.props.margin[0];
     height = height + this.props.margin[1];
+    var maxRows = this.props.maxRows;
+    var y = this.props.y;
     var w = Math.round(width / this.props.containerWidth * this.props.cols);
     var h = Math.round(height / this.props.rowHeight);
     w = Math.max(Math.min(w, this.props.cols - this.props.x), 0);
-    h = Math.max(h, 0);
+    h = Math.max(Math.min(h, maxRows - y), 0);
     return { w: w, h: h };
   },
 

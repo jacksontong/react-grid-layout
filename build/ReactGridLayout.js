@@ -55,6 +55,7 @@ var ReactGridLayout = React.createClass({
     margin: React.PropTypes.array,
     // Rows have a static height, but you can change this based on breakpoints if you like
     rowHeight: React.PropTypes.number,
+    maxRows: React.PropTypes.number,
 
     //
     // Flags
@@ -117,6 +118,7 @@ var ReactGridLayout = React.createClass({
       isResizable: true,
       useCSSTransforms: true,
       verticalCompact: true,
+      maxRows: Infinity,
       onLayoutChange: function onLayoutChange() {},
       onDragStart: function onDragStart() {},
       onDrag: function onDrag() {},
@@ -339,6 +341,7 @@ var ReactGridLayout = React.createClass({
         isPlaceholder: true,
         className: 'react-grid-placeholder',
         containerWidth: this.state.width,
+        maxRows: this.props.maxRows,
         cols: this.props.cols,
         margin: this.props.margin,
         rowHeight: this.props.rowHeight,
@@ -380,6 +383,7 @@ var ReactGridLayout = React.createClass({
         moveOnStartChange: moveOnStartChange,
         cancel: this.props.draggableCancel,
         handle: this.props.draggableHandle,
+        maxRows: this.props.maxRows,
         onDragStop: this.onDragStop,
         onDragStart: this.onDragStart,
         onDrag: this.onDrag,
