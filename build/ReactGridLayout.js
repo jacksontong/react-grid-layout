@@ -57,6 +57,8 @@ var ReactGridLayout = React.createClass({
     rowHeight: React.PropTypes.number,
     maxRows: React.PropTypes.number,
 
+    preventCollision: React.PropTypes.bool,
+
     //
     // Flags
     //
@@ -234,7 +236,7 @@ var ReactGridLayout = React.createClass({
     };
 
     // Move the element to the dragged location.
-    layout = utils.moveElement(layout, l, x, y, true /* isUserAction */);
+    layout = utils.moveElement(layout, l, x, y, true, /* isUserAction */this.props.preventCollision);
 
     this.props.onDrag(layout, oldL, l, placeholder, e);
 
@@ -264,7 +266,7 @@ var ReactGridLayout = React.createClass({
     var oldL = utils.clone(l);
 
     // Move the element here
-    layout = utils.moveElement(layout, l, x, y, true /* isUserAction */);
+    layout = utils.moveElement(layout, l, x, y, true, /* isUserAction */this.props.preventCollision);
 
     this.props.onDragStop(layout, oldL, l, null, e);
 
